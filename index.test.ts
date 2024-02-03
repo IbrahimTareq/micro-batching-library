@@ -16,7 +16,7 @@ const mockBatchProcessor = batchProcessor as jest.MockedFunction<
   typeof batchProcessor
 >;
 
-describe("MicroBatcher Library", () => {
+describe("Micro Batcher Library", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
