@@ -1,3 +1,5 @@
+import { batchProcessor } from "./batchProcessor";
+
 type Job = {
   id: string;
   data: string;
@@ -16,6 +18,11 @@ export const createMicroBatcher = (batchSize: number, frequency: number) => {
     if (jobQueue.length === 0) return;
 
     const batch = jobQueue.splice(0, batchSize);
+    const results = await batchProcessor(batch);
+    results.forEach((result) => {
+      resultResolvers.get(result.id)?.(result);
+      resultResolvers.delete(result.id);
+    });
   };
 
   const interval = setInterval(processJobs, frequency);
