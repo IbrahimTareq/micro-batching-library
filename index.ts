@@ -35,10 +35,10 @@ export const createMicroBatcher = (batchSize: number, frequency: number) => {
   }
 
   async function shutdown() {
-    clearInterval(interval); 
-    await processJobs(); 
+    clearInterval(interval); // Stop the scheduled job processing
+    await processJobs(); // Process remaining jobs
     while (jobQueue.length > 0) {
-      await processJobs(); 
+      await processJobs(); // Ensure all jobs are processed
     }
   }
 
