@@ -1,14 +1,5 @@
 import { batchProcessor } from "./batchProcessor";
-
-type Job = {
-  id: string;
-  data: string;
-};
-
-type JobResult = {
-  id: string;
-  result: Record<string, any>;
-};
+import { Job, JobResult } from "./types";
 
 export const createMicroBatcher = (batchSize: number, frequency: number) => {
   let jobQueue: Job[] = [];

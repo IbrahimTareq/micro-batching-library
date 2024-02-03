@@ -1,4 +1,6 @@
-export const batchProcessor = (jobs: Array<any>): Promise<any[]> => {
+import { Job, JobResult } from "./types";
+
+export const batchProcessor = (jobs: Array<Job>): Promise<JobResult[]> => {
     return new Promise((resolve) => {
         setTimeout(() => {
             // Simulate processing each job and generating a result
