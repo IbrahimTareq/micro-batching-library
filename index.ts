@@ -1,7 +1,13 @@
 import { batchProcessor } from "./batchProcessor";
 import { Job, JobResult } from "./types";
 
-export const createMicroBatcher = (batchSize: number, frequency: number) => {
+export const createMicroBatcher = ({
+  batchSize,
+  frequency,
+}: {
+  batchSize: number;
+  frequency: number;
+}) => {
   let jobQueue: Job[] = [];
   let resultResolvers: Map<string, (result: JobResult) => void> = new Map();
 
@@ -34,4 +40,4 @@ export const createMicroBatcher = (batchSize: number, frequency: number) => {
   }
 
   return { submitJob, shutdown };
-}
+};
