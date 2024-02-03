@@ -46,7 +46,7 @@ const microBatcher = createMicroBatcher({ batchSize: 2, frequency: 3000 });
 	microBatcher.submitJob({ id: "6", data: { key: 'test6' } }),
 ]);
 
-console.log(jobResults); 
+console.log("Final result: ", jobResults); 
 await microBatcher.shutdown(); 
 })();
 ```

@@ -9,7 +9,7 @@ jest.mock("./batchProcessor", () => ({
   ),
 }));
 
-import { createMicroBatcher } from ".";
+import { microBatcher as createMicroBatcher } from ".";
 import { batchProcessor } from "./batchProcessor";
 
 const mockBatchProcessor = batchProcessor as jest.MockedFunction<

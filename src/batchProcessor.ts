@@ -10,6 +10,7 @@ export const batchProcessor = (jobs: Array<Job>): Promise<JobResult[]> => {
                     processed: true
                 }
             }));
+            console.log(`Batch processed ${jobs.length} jobs`);
             resolve(results);
         }, 500); // Simulate a processing delay of 500ms
     });

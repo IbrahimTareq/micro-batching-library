@@ -1,7 +1,7 @@
 import { batchProcessor } from "./batchProcessor";
 import { Job, JobResult } from "./types";
 
-export const createMicroBatcher = ({
+export const microBatcher = ({
   batchSize,
   frequency,
 }: {
@@ -24,14 +24,14 @@ export const createMicroBatcher = ({
 
   const interval = setInterval(processJobs, frequency);
 
-  function submitJob(job: Job): Promise<JobResult> {
+  const submitJob = (job: Job): Promise<JobResult> => {
     jobQueue.push(job);
     return new Promise((resolve) => {
       resultResolvers.set(job.id, resolve);
     });
   }
 
-  async function shutdown() {
+  const shutdown = async () => {
     clearInterval(interval); // Stop the scheduled job processing
     await processJobs(); // Process remaining jobs
     while (jobQueue.length > 0) {
