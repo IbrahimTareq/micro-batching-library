@@ -51,4 +51,4 @@ await microBatcher.shutdown();
 })();
 ```
 
-Assuming the code in the above example was added to a file called `test.ts`, you can run it via the following command - `npx tsx test.ts`. 
+The above code has been added to [`demo/index.ts`](demo/index.ts). You can run it via the following the command - `yarn demo`.
